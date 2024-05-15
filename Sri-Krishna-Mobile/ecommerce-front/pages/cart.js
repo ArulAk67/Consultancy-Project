@@ -103,13 +103,27 @@ export default function CartPage() {
     removeProduct(id);
   }
   async function goToPayment() {
+    // if
+    // const response = await axios.post('/api/checkout', {
+    //   name,email,city,phone,postalCode,streetAddress,country,
+    //   cartProducts,
+    // });
+    // setIsSuccess(true);
+    // console.log(isSuccess);
+    // clearCart();
+    if(name=="" || email=="" || city=="" || postalCode=="" || streetAddress=="" || country=="" || cartProducts==""){
+      alert("All details need to be filled!!");
+    }
+    else{
     const response = await axios.post('/api/checkout', {
-      name,email,city,phone,postalCode,streetAddress,country,
+      name,email,city,postalCode,streetAddress,country,
       cartProducts,
     });
     setIsSuccess(true);
-    console.log(isSuccess);
+    // console.log(isSuccess);
     clearCart();
+  }
+    
   }
   let total = 0;
   for (const productId of cartProducts) {
